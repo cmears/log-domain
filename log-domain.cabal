@@ -39,10 +39,6 @@ flag lib-Werror
   default: False
   manual: True
 
-flag useFFI
-  default: True
-  manual: True
-
 library
   build-depends:
     base                      >= 4.3      && < 5,
@@ -66,8 +62,8 @@ library
   if flag(lib-Werror)
     ghc-options: -Werror
 
-  if flag(useFFI)
-    cpp-options: -D__USE_FFI__
+  if os(windows)
+    cpp-options: -D__DONT_USE_FFI__
 
   ghc-options: -Wall -fwarn-tabs -O2
   hs-source-dirs: src

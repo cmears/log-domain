@@ -457,7 +457,7 @@ instance (RealFloat a, Precise a) => Precise (Complex a) where
     | otherwise = log (1 + x)
   {-# INLINE log1p #-}
 
-#ifdef __USE_FFI__
+#ifndef __DONT_USE_FFI__
 
 foreign import ccall unsafe "math.h log1p" c_log1p :: Double -> Double
 foreign import ccall unsafe "math.h expm1" c_expm1 :: Double -> Double
